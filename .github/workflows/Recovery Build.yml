@@ -154,13 +154,21 @@ jobs:
       with:
         swap-size-gb: 12
 
-    - name: Check Build Branch
-      if: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-9.0' }}
+    - name: Check Build Branch - Step 1
+      if: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-12.1' }}
       run: |
         PATH=~/bin:$PATH
         cd ${{ steps.pwd.outputs.pwd }}
         source build/envsetup.sh
         repopick 5405 5540
+
+    - name: Check Build Branch - Step 2
+      if: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-5.1' }}
+      run: |
+        PATH=~/bin:$PATH
+        cd ${{ steps.pwd.outputs.pwd }}
+        cd bootable/recovery
+        git fetch https://gerrit.twrp.me/android_bootable_recovery refs/changes/29/5729/1 && git cherry-pick FETCH_HEAD
 
     - name: Building recovery
       run: |

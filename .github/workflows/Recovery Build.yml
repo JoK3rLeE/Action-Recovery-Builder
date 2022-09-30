@@ -18,7 +18,7 @@ on:
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'android-12'
+        default: '12-Legacy'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true

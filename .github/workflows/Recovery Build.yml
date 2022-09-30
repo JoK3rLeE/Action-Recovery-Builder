@@ -14,11 +14,11 @@ on:
       DEVICE_TREE_URL:
         description: 'DEVICE_TREE_URL'
         required: true
-        default: 'https://github.com/JoK3rLeE/android_device_xiaomi_cepheus-twrp'
+        default: 'https://github.com/JoK3rLeE/android_device_xiaomi_cepheus'
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: 'Spark-noerofs'
+        default: 'android-12'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true

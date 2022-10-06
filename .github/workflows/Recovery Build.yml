@@ -18,7 +18,7 @@ on:
       DEVICE_TREE_BRANCH:
         description: 'DEVICE_TREE_BRANCH'
         required: true
-        default: '12-Legacy'
+        default: 'WIP'
       DEVICE_PATH:
         description: 'DEVICE_PATH'
         required: true
@@ -136,7 +136,6 @@ jobs:
 
     - name: Sync Device Dependencies
       run: |
-        bash ${GITHUB_WORKSPACE}/scripts/convert.sh ${{ github.event.inputs.DEVICE_PATH }}/${{ steps.buildtree.outputs.value }}.dependencies
         repo sync -j$(nproc --all)
       working-directory: ${{ steps.pwd.outputs.pwd }}
       continue-on-error: true
@@ -150,7 +149,6 @@ jobs:
       if: ${{ github.event.inputs.MANIFEST_BRANCH == 'twrp-12.1' }}
       run: |
         source build/envsetup.sh
-        repopick 5405 5540
       working-directory: ${{ steps.pwd.outputs.pwd }}
 
     - name: Building recovery
